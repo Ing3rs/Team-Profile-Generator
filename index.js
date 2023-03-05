@@ -13,6 +13,9 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+// make array for info to go into
+const team = [];
+
 // manager prompts
 managerQuestions = () => {
 
@@ -41,6 +44,11 @@ managerQuestions = () => {
 
         // once questions have been answers, prompt to generate another team member
         .then((answers) => {
+
+            // create new manager
+            team.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
+
+            // ask if they want to create another role
             rolePrompt()
         })
 
@@ -75,6 +83,11 @@ engineerQuestions = () => {
     ])
         // once questions have been answers, prompt to generate another team member
         .then((answers) => {
+
+            // create new manager
+            team.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
+
+            // ask if they want to create another role
             rolePrompt()
         })
 
@@ -109,6 +122,11 @@ internQuestions = () => {
     ])
         // once questions have been answers, prompt to generate another team member
         .then((answers) => {
+
+            // create new manager
+            team.push(new Intern(answers.name, answers.id, answers.email, answers.school));
+
+            // ask if they want to create another role
             rolePrompt()
         })
 
@@ -120,6 +138,7 @@ internQuestions = () => {
 // create another team member prompt
 rolePrompt = () => {
 
+    // ask which role the user would like to create
     inquirer.prompt([
         {
             type: 'list',
@@ -129,6 +148,7 @@ rolePrompt = () => {
         },
     ])
 
+        // depending on answer, present prompts for that role
         .then((answers) => {
             if (answers.role === "Engineer") {
                 return engineerQuestions();
@@ -138,20 +158,29 @@ rolePrompt = () => {
                 return internQuestions();
             }
 
+            // if no more roles to add, generate HTML
             if (answers.role === "I don't want to add any more team members") {
-                return console.log('Thank you for completing all the questions. A team page has been successfully generated for you!')
+
+                // success message
+                console.log('Thank you for completing all the questions.')
+
+                // generate html
+                writeToFile('output/team.html', render(team));
+
             }
         })
 };
 
+// function to write HTML file
+function writeToFile(fileName, data) {
 
+    // write data to team.html in the output folder
+    fs.writeFile('output/team.html', (data), (err) =>
+
+    // give success message if written to HTML, otherwise error
+        err ? console.error(err) : console.log("Congrats! A team page has been successfully generated for you.")
+    );
+}
 
 // initialise questions
 managerQuestions();
-
-
-// for testing before prompts:
-// const employeeTest = new Employee("Claire", 22545, "employee@email.com");
-// const engineerTest = new Engineer("Harry", 666, "engineer@email.com", "HarrySmith");
-// const internTest = new Intern("Abigail", 5569, "intern@email.com", "Park Hall");
-// const managerTest = new Manager("Dave", 789, "manager@email.com", 4456998);
