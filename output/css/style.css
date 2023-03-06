@@ -1,0 +1,46 @@
+* {
+    font-family: monospace;
+}
+
+.card-title {
+    font-size: 25px;
+}
+
+.card-body {
+    font-size: 15px;
+}
+
+body {
+    background-color: #333f58;
+}
+
+.team-heading {
+    background-color: white;
+}
+
+.card {
+    border: 0;
+}
+
+
+/* employee specific colouring */
+
+.employee-card {
+    box-shadow: 0.3em 0.3em 0 0 #292831;
+}
+
+.manager-header {
+    background-color: #4a7a96;
+    color: white;
+}
+
+.engineer-header {
+    background-color: #84cec9;
+    color: white;
+}
+
+.intern-header {
+    background-color: #ee8695;
+    color: white;
+}
+
