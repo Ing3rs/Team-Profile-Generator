@@ -1,142 +1,64 @@
-# Module 12 Object-Oriented Programming: Team Profile Generator
+# Team Profile Generator
 
-## Your Task
+## Description
+My task was to produce a Node.js command-line application which will take in information about employees on a software engineering team, then generate an HTML webpage that displays summaries for each person. 
 
-Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
+I was also presented with a series of failed tests, which I was required to ensure run successfully.
 
-## User Story
 
-As a manager a user want to generate a webpage that displays my team's basic info so that a user have quick access to their emails and GitHub profiles.
+## Table of contents
 
-## Instructions
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Next steps](#Next-steps)
+* [Notes](#Notes)
+* [License](#License)
 
-* Create a command-line application that accepts accepts user input using the provided starter code.   
-  * Create classes for each team member provided and export them. The tests for these classes (in the `_tests_` directory) must ALL pass.     
-    * The first class is an `Employee` parent class with the following properties and methods:       
-      * `name`
-      * `id`
-      * `email`
-      * `getName()`
-      * `getId()`
-      * `getEmail()`
-      * `getRole()`&mdash;returns `'Employee'`     
-    * The other three classes will extend `Employee`.      
-    * In addition to `Employee`'s properties and methods, `Manager` will also have the following:
-      * `officeNumber`
-      * `getRole()`&mdash;overridden to return `'Manager'`
-    * In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
-      * `github`&mdash;GitHub username
-      * `getGithub()`
-      * `getRole()`&mdash;overridden to return `'Engineer'`
-    * In addition to `Employee`'s properties and methods, `Intern` will also have the following:
-      * `school`
-      * `getSchool()`
-      * `getRole()`&mdash;overridden to return `'Intern'`
-    * Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format.   
-  * Write code in `index.js` that uses inquirer to gather information about the development team members and creates objects for each team member using the correct classes as blueprints.
-    * When a user starts the application then they are prompted to enter the **team manager**’s:
-      * Name
-      * Employee ID
-      * Email address
-      * Office number
-    * When a user enters those requirements then the user is presented with a menu with the option to:
-      * Add an engineer
-      * Add an intern 
-      * Finish building the team
-    * When a user selects the **engineer** option then a user is prompted to enter the following and then the user is taken back to the menu:
-      * Engineer's Name
-      * ID
-      * Email
-      * GitHub username
-    * When a user selects the intern option then a user is prompted to enter the following and then the user is taken back to the menu:
-      * Intern’s name
-      * ID
-      * Email
-      * School
-    * When a user decides to finish building their team then they exit the application, and the HTML is generated.
-  * Call the `render` function (provided for you) and pass in an array containing all employee objects; 
-    * The `render` function will generate and return a block of HTML including templated divs for each employee!
-  * Create an HTML file using the HTML returned from the `render` function. 
-    * Write it to a file named `team.html` in the `output` folder. 
-    * You can use the provided variable `outputPath` to target this location.
 
----
+## Installation
 
-## Mock-Up
+To install this application, open the command line and run 'npm install' to install the following dependencies: 
 
-The following image shows a mock-up of the generated HTML’s appearance and functionality:
+* jest
+* inquirer
+* fs
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./Assets/14-object-oriented-programming-challenge-demo.png)
 
-The styling in the image is just an example, so feel free to add your own.
+## Usage
 
----
-
-## Getting Started
-
-This Challenge will combine many of the skills we've covered so far. In addition to the User Story and Acceptance Criteria, we’ve provided some guidelines to help get started.
-
-Your application should use [Jest](https://www.npmjs.com/package/jest) for running the unit tests and [Inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user. The application will be invoked by using the following command:
+Once installed, the application can be invoked by using the following command:
 
 ```bash
 node index.js
 ```
 
----
+Answer each prompt and when completed an HTML file titled 'team.html' will be automatically generated in the output file using your input.
 
-## Hints
+Styling will also be applied, which is conveniently stored in the same output folder, under css. If you do not require styling, or want to add your own, simply delete this file.
 
-* You will want to make your methods as pure as possible. This means try to make your methods simple so that they are easier to test.
+Once generated, the page will look similar to the below: 
 
-* The different employee types should all inherit some methods and properties from a base class of `Employee`.
- 
-* Be sure to test out each class and verify it generates an object with the correct structure and methods. This structure will be crucial in order for the provided `render` function to work!
-  
-* You may need to check if the `output` folder exists and create it if it does not.
+![screenshot](https://github.com/Ing3rs/Team-Profile-Generator/blob/main/assets/team-profile-screenshot.png)
 
----
 
-## Grading Requirements
+## Next steps
 
-This Challenge is graded based on the following criteria: 
+In future, I would like to: 
+* add validation for fields, such as email, to ensure they are in the proper format
+* improve the application so that it runs directly in the broswer
+* create styling options for users to choose from before generating the file (i.e. dark/light versions, colour specific themes based on company colours etc.)
 
-### Deliverables: 25%
+## Notes
 
-* A sample HTML file generated using the application must be submitted.
+Thank you to lospec.com for the wonderful colour palettes:
+* https://lospec.com/palette-list/cyber-ping-pong
+* https://lospec.com/palette-list/twilight-5
 
-* Your GitHub repository containing your application code.
 
-### Technical Acceptance Criteria: 50%
+## Licence
 
-* Satisfies all of the preceding acceptance criteria plus the following:
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-	* Uses the [Inquirer package](https://www.npmjs.com/package/inquirer).
+Copyright (c) ing3rs. All rights reserved.
 
-	* All tests pass using the [Jest package](https://www.npmjs.com/package/jest).
-
-  * The application must have `Employee`, `Manager`, `Engineer`, and `Intern` classes.
-
-### Repository Quality: 25%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality readme with description.
-
----
-
-## Review
-
-You are required to submit the following for review:
-
-* A sample HTML file generated using your application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Licensed under the [MIT](https://github.com/Ing3rs/Team-Profile-Generator/blob/main/LICENSE) license.
